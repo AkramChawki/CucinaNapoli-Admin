@@ -9,7 +9,14 @@ class CuisinierProduct extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'image',
+        'designation',
+        'imputation',
+        'unite',
+        'cuisinier_category_id',
+        'Stock',
+    ];
 
     public function category()
     {

@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CuisinierCategory extends Model
+class ErreurCuisine extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
+        'date',
+        'erreur',
     ];
-
-    public function products()
-    {
-        return $this->hasMany(CuisinierProduct::class);
-    }
 }

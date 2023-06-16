@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("designation");
             $table->string("imputation");
             $table->string("unite");
+            $table->integer("Stock")->nullable();
             $table->foreignId('cuisinier_category_id')
                 ->constrained()
                 ->onDelete('cascade');

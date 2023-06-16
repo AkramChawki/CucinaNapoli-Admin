@@ -7,7 +7,7 @@
             <p class="mb-4 text-xl font-medium">Les produits: </p>
             <ul class="list-disc pl-6 text-lg">
                 @foreach ($record->products() as $product)
-                    <li>{{ $product->designation }}</li>
+                    <li>{{ $product->designation }}, Quantité: {{ $product->qty }}</li>
                 @endforeach
             </ul>
         </div>

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cuisinier_orders', function (Blueprint $table) {
+        Schema::create('erreur_cuisines', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->json("detail");
+            $table->string("date");
+            $table->string("erreur");
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cuisinier_orders');
+        Schema::dropIfExists('erreur_cuisines');
     }
 };
