@@ -33,8 +33,7 @@ class CuisinierProductResource extends Resource
                     ->options(CuisinierCategory::all()->pluck("name", "id"))
                     ->required(),
                 Forms\Components\FileUpload::make('image')
-                    ->image()
-                    ->required(),
+                    ->image(),
                 Forms\Components\TextInput::make('designation')
                     ->required()
                     ->maxLength(255),
