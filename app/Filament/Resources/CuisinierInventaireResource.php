@@ -21,6 +21,10 @@ class CuisinierInventaireResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
+    protected static ?string $navigationGroup = 'Commande Cuisinier';
+
+    protected static ?int $navigationSort = 4;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -72,4 +76,9 @@ class CuisinierInventaireResource extends Resource
             'edit' => Pages\EditCuisinierInventaire::route('/{record}/edit'),
         ];
     }    
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
+    }
 }
