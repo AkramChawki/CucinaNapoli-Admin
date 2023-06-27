@@ -72,4 +72,9 @@ class CouponResource extends Resource
             'index' => Pages\ManageCoupons::route('/'),
         ];
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
+    }
 }

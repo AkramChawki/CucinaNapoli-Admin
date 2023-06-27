@@ -83,4 +83,9 @@ class CategoryResource extends Resource
             'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
+    
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
+    }
 }

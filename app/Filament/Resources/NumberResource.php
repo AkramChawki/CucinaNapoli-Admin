@@ -65,4 +65,9 @@ class NumberResource extends Resource
             'edit' => Pages\EditNumber::route('/{record}/edit'),
         ];
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
+    }
 }

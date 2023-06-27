@@ -78,4 +78,9 @@ class CuisinierOrderResource extends Resource
     {
         return false;
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
+    }
 }

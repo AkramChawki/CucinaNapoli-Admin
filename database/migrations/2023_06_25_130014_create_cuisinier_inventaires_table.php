@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cuisinier_categories', function (Blueprint $table) {
+        Schema::create('cuisinier_inventaires', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("acteur");
+            $table->foreignId("cuisinier_product_id")->constrained()->cascadeOnDelete();
+            $table->integer("stock");
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cuisinier_categories');
+        Schema::dropIfExists('cuisinier_inventaires');
     }
 };

@@ -36,18 +36,27 @@ class BlogResource extends Resource
                     ->required()
                     ->unique(Product::class, 'slug', ignoreRecord: true)
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('sujet')
+                Forms\Components\TextInput::make('sujet')
                     ->columnSpan("full")
                     ->required(),
-                Forms\Components\FileUpload::make('Primary')
-                    ->image()
-                    ->directory("blog")
+                Forms\Components\RichEditor::make('resume')
+                    ->columnSpan("full")
                     ->required(),
-                Forms\Components\FileUpload::make('Secondary')
-                    ->image()
-                    ->directory("blog")
+                Forms\Components\RichEditor::make('Primary')
+                    ->columnSpan("full")
+                    ->required(),
+                Forms\Components\RichEditor::make('Secondary')
+                    ->columnSpan("full")
                     ->required(),
                 Forms\Components\FileUpload::make('imageP')
+                    ->image()
+                    ->directory("blog")
+                    ->required(),
+                Forms\Components\FileUpload::make('image1')
+                    ->image()
+                    ->directory("blog")
+                    ->required(),
+                Forms\Components\FileUpload::make('image2')
                     ->image()
                     ->directory("blog")
                     ->required(),
@@ -58,7 +67,7 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('Primary')->square(),
+                Tables\Columns\ImageColumn::make('imageP')->square(),
                 Tables\Columns\TextColumn::make('title'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->date(),
@@ -88,5 +97,10 @@ class BlogResource extends Resource
             'create' => Pages\CreateBlog::route('/create'),
             'edit' => Pages\EditBlog::route('/{record}/edit'),
         ];
+    }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
     }
 }

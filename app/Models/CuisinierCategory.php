@@ -11,6 +11,7 @@ class CuisinierCategory extends Model
 
     protected $fillable = [
         'name',
+        'acteur',
     ];
 
     public function products()

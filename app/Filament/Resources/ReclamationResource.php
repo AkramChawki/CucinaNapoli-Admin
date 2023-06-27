@@ -80,4 +80,9 @@ class ReclamationResource extends Resource
             'edit' => Pages\EditReclamation::route('/{record}/edit'),
         ];
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
+    }
 }

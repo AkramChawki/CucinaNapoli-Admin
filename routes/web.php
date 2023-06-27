@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CuisinierInventaire;
 use Illuminate\Support\Facades\Route;
 
 /*

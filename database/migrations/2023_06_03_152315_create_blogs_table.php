@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string("title");
             $table->string("slug");
             $table->string("sujet");
+            $table->string("resume");
             $table->text("Primary");
             $table->text("Secondary");
             $table->text("imageP");
+            $table->text("image1");
+            $table->text("image2");
             $table->timestamps();
         });
     }

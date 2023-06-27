@@ -84,4 +84,9 @@ class OrderResource extends Resource
     {
         return false;
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return str_ends_with(auth()->user()->email, '@cucinanapoli.com');
+    }
 }

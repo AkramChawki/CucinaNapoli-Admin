@@ -116,4 +116,9 @@ class ClotureCaisseResource extends Resource
     {
         return true;
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
+    }
 }

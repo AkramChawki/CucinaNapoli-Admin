@@ -100,4 +100,9 @@ class ReservationResource extends Resource
             'edit' => Pages\EditReservation::route('/{record}/edit'),
         ];
     }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return str_ends_with(auth()->user()->email, '@cucinanapoli.com');
+    }
 }

@@ -30,6 +30,10 @@ class CuisinierCategoryResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                    Forms\Components\Select::make('acteur')
+                    ->multiple()
+                    ->options(["Cuisine" => "Cuisinier", "Pizza" => "Pizza", "Salle" => "Salle", "Labo" => "Labo"])
+                    ->required(),
             ]);
     }
 
@@ -38,6 +42,7 @@ class CuisinierCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('acteur'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->date(),
             ])
@@ -66,5 +71,10 @@ class CuisinierCategoryResource extends Resource
             'create' => Pages\CreateCuisinierCategory::route('/create'),
             'edit' => Pages\EditCuisinierCategory::route('/{record}/edit'),
         ];
+    }
+
+    protected static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->email == "admin@cucinanapoli.com";
     }
 }

@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ErreurCuisineResource\Pages;
-use App\Filament\Resources\ErreurCuisineResource\RelationManagers;
-use App\Models\ErreurCuisine;
+use App\Filament\Resources\CuisinierInventaireResource\Pages;
+use App\Filament\Resources\CuisinierInventaireResource\RelationManagers;
+use App\Models\CuisinierInventaire;
+use App\Models\CuisinierProduct;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -12,24 +13,23 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
-class ErreurCuisineResource extends Resource
+class CuisinierInventaireResource extends Resource
 {
-    protected static ?string $model = ErreurCuisine::class;
+    protected static ?string $model = CuisinierInventaire::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-
-    protected static ?string $navigationGroup = 'Commande Cuisinier';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\Select::make('cuisinier_product_id')
+                    ->options(CuisinierProduct::all()->pluck("designation", "id"))
                     ->required(),
-                Forms\Components\DatePicker::make('date')
-                    ->required(),
-                Forms\Components\TextInput::make('erreur')
+                Forms\Components\TextInput::make('stock')
+                    ->numeric()
                     ->required(),
             ]);
     }
@@ -38,11 +38,11 @@ class ErreurCuisineResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('date'),
-                Tables\Columns\TextColumn::make('erreur'),
+                Tables\Columns\TextColumn::make('product.designation')
+                    ->label("Designation"),
+                Tables\Columns\TextColumn::make('stock'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Date')
+                    ->label("Date")
                     ->date(),
             ])
             ->filters([
@@ -53,27 +53,23 @@ class ErreurCuisineResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                ExportBulkAction::make()
             ]);
     }
-
+    
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListErreurCuisines::route('/'),
-            'create' => Pages\CreateErreurCuisine::route('/create'),
-            'edit' => Pages\EditErreurCuisine::route('/{record}/edit'),
+            'index' => Pages\ListCuisinierInventaires::route('/'),
+            'create' => Pages\CreateCuisinierInventaire::route('/create'),
+            'edit' => Pages\EditCuisinierInventaire::route('/{record}/edit'),
         ];
-    }
-
-    protected static function shouldRegisterNavigation(): bool
-    {
-        return auth()->user()->email == "admin@cucinanapoli.com";
-    }
+    }    
 }
