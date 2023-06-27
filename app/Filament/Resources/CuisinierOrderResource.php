@@ -13,6 +13,7 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Actions\Action;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class CuisinierOrderResource extends Resource
 {
@@ -55,6 +56,7 @@ class CuisinierOrderResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
+                ExportBulkAction::make()
             ]);
     }
 
