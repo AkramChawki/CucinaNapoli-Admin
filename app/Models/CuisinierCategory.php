@@ -13,6 +13,10 @@ class CuisinierCategory extends Model
         'name',
         'acteur',
     ];
+    
+    protected $casts = [
+        'acteur' => 'array',
+    ];
 
     public function products()
     {
