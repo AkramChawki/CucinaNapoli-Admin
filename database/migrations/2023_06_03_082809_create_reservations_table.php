@@ -19,9 +19,8 @@ return new class extends Migration
             $table->string("email");
             $table->string("adults");
             $table->string("childs");
-            $table->date("date");
-            $table->time("time");
-            $table->string("notes");
+            $table->dateTime('selectedDate');
+            $table->string("notes")->nullable();
             $table->foreignId("user_id")->nullable()->constrained();
             $table->timestamps();
         });
