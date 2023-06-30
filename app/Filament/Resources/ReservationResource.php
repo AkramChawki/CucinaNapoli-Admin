@@ -51,9 +51,7 @@ class ReservationResource extends Resource
                 Forms\Components\TextInput::make('childs')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\DatePicker::make('date')
-                    ->required(),
-                Forms\Components\TimePicker::make('time')
+                Forms\Components\DateTimePicker::make('selectedDate')
                     ->required(),
                 Forms\Components\Textarea::make('notes')
                     ->required()
