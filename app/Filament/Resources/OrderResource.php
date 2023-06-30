@@ -34,6 +34,7 @@ class OrderResource extends Resource
                     ->options([
                         "waiting" => "En attente",
                         "delivred" => "Livrée",
+                        "Cancelled" => "Annulée",
                     ]),
             ]);
     }
