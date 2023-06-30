@@ -56,7 +56,8 @@ class CuisinierProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image')->square(),
-                Tables\Columns\TextColumn::make('designation'),
+                Tables\Columns\TextColumn::make('designation')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('imputation'),
                 Tables\Columns\TextColumn::make('unite'),
                 Tables\Columns\TextColumn::make('Stock'),

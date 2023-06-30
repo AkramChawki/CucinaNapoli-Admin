@@ -49,8 +49,10 @@ class ReclamationResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('date')
                     ->date(),
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('ticket'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('ticket')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('canal'),
                 Tables\Columns\TextColumn::make('objet'),
                 Tables\Columns\TextColumn::make('motif'),

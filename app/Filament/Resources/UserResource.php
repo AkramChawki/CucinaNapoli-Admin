@@ -49,11 +49,14 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nom'),
-                Tables\Columns\TextColumn::make('prenom'),
+                Tables\Columns\TextColumn::make('nom')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('prenom')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('adress'),
                 Tables\Columns\TextColumn::make('telephone'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('points'),
             ])
             ->filters([

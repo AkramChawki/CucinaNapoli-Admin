@@ -68,8 +68,10 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')->square(),
                 Tables\Columns\TextColumn::make('category.name')
-                    ->label("Category"),
-                Tables\Columns\TextColumn::make('name'),
+                    ->label("Category")
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('restaurant'),
                 Tables\Columns\TextColumn::make('price'),
                 Tables\Columns\TextColumn::make('created_at')

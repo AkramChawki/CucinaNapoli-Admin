@@ -67,13 +67,17 @@ class ClotureCaisseResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('date')
-                    ->date(),
+                    ->date()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('time')
                     ->time(),
-                Tables\Columns\TextColumn::make('caissierE'),
-                Tables\Columns\TextColumn::make('caissierS'),
+                Tables\Columns\TextColumn::make('caissierE')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('caissierS')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('montant'),
                 Tables\Columns\TextColumn::make('montantE'),
                 Tables\Columns\TextColumn::make('glovoE'),

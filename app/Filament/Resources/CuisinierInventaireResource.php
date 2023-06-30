@@ -43,7 +43,8 @@ class CuisinierInventaireResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('product.designation')
-                    ->label("Designation"),
+                    ->label("Designation")
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('stock'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label("Date")

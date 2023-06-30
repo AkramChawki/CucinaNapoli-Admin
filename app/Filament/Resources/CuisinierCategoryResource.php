@@ -42,7 +42,8 @@ class CuisinierCategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('acteur'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->date(),
