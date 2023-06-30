@@ -70,9 +70,8 @@ class ReservationResource extends Resource
                 Tables\Columns\TextColumn::make('telephone'),
                 Tables\Columns\TextColumn::make('adults'),
                 Tables\Columns\TextColumn::make('childs'),
-                Tables\Columns\TextColumn::make('date')
-                    ->date(),
-                Tables\Columns\TextColumn::make('time'),
+                Tables\Columns\TextColumn::make('selectedDate')
+                    ->dateTime(),
                 Tables\Columns\TextColumn::make('notes'),
             ])
             ->filters([

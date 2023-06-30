@@ -18,8 +18,7 @@ class Reservation extends Model
         'email',
         'adults',
         'childs',
-        'date',
-        'time',
+        'selectedDate',
         'notes',
         'user_id',
     ];
