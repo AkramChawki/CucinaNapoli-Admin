@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string("cartebancaire");
             $table->string("LivE");
             $table->string("LivC");
+            $table->string("encaissement");
             $table->string("signature");
             $table->timestamps();
         });

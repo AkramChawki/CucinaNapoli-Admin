@@ -56,6 +56,9 @@ class ClotureCaisseResource extends Resource
                 Forms\Components\TextInput::make('LivC')
                     ->numeric()
                     ->required(),
+                Forms\Components\TextInput::make('encaissement')
+                    ->numeric()
+                    ->required(),
                 Forms\Components\FileUpload::make('signature')
                     ->image()
                     ->directory("singatures")
@@ -85,6 +88,7 @@ class ClotureCaisseResource extends Resource
                 Tables\Columns\TextColumn::make('cartebancaire'),
                 Tables\Columns\TextColumn::make('LivE'),
                 Tables\Columns\TextColumn::make('LivC'),
+                Tables\Columns\TextColumn::make('encaissement'),
                 Tables\Columns\ImageColumn::make('signature'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Date')

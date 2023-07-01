@@ -22,6 +22,7 @@ class ClotureCaisse extends Model
         'cartebancaire',
         'LivE',
         'LivC',
+        'encaissement',
         'signature',
     ];
 }
