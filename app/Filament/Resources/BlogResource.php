@@ -35,7 +35,7 @@ class BlogResource extends Resource
                     ->afterStateUpdated(fn (string $context, $state, callable $set) => $context === 'create' ? $set('slug', Str::slug($state)) : null),
                 Forms\Components\TextInput::make('slug')
                     ->required()
-                    ->unique(Product::class, 'slug', ignoreRecord: true)
+                    ->unique(Blog::class, 'slug', ignoreRecord: true)
                     ->maxLength(255),
                 Forms\Components\TextInput::make('sujet')
                     ->columnSpan("full")
