@@ -88,6 +88,19 @@ class OrderResource extends Resource
         return false;
     }
 
+
+    public static function getEloquentQuery(): Builder
+    {
+        if (auth()->user()->email === "palmier@cucinanapoli.com") {
+            return parent::getEloquentQuery()->where('restaurant', 'palmier');
+        } elseif (auth()->user()->email === "anoual@cucinanapoli.com") {
+            return parent::getEloquentQuery()->where("restaurant", "anoual");
+        } else {
+            return parent::getEloquentQuery();
+        }
+    }
+
+
     protected static function shouldRegisterNavigation(): bool
     {
         return str_ends_with(auth()->user()->email, '@cucinanapoli.com');
