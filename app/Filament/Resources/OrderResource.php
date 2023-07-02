@@ -36,6 +36,11 @@ class OrderResource extends Resource
                         "delivred" => "Livrée",
                         "Cancelled" => "Annulée",
                     ]),
+                Forms\Components\Select::make('payed')
+                    ->options([
+                        true => "Oui",
+                        false => "non",
+                    ]),
             ]);
     }
 
@@ -50,6 +55,9 @@ class OrderResource extends Resource
                 Tables\Columns\TextColumn::make('telephone'),
                 Tables\Columns\TextColumn::make('delivery_type')
                     ->label("Methode de Livraison"),
+                Tables\Columns\IconColumn::make('payed')
+                    ->label("payed ?")
+                    ->boolean(),
                 Tables\Columns\IconColumn::make('use_whatsapp')
                     ->label("Whatsapp ?")
                     ->boolean(),
