@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("adults");
             $table->string("childs");
             $table->dateTime('selectedDate');
+            $table->string('restau');
             $table->string("notes")->nullable();
             $table->foreignId("user_id")->nullable()->constrained();
             $table->timestamps();

@@ -45,6 +45,9 @@ class ReservationResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('restaurant')
+                    ->options(config("restaurants"))
+                    ->required(),
                 Forms\Components\TextInput::make('adults')
                     ->required()
                     ->maxLength(255),
@@ -67,6 +70,7 @@ class ReservationResource extends Resource
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('telephone')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('restau'),
                 Tables\Columns\TextColumn::make('adults'),
                 Tables\Columns\TextColumn::make('childs'),
                 Tables\Columns\TextColumn::make('selectedDate')
@@ -99,6 +103,17 @@ class ReservationResource extends Resource
             'create' => Pages\CreateReservation::route('/create'),
             'edit' => Pages\EditReservation::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        if (auth()->user()->email === "palmier@cucinanapoli.com") {
+            return parent::getEloquentQuery()->where('restau', 'Palmier');
+        } elseif (auth()->user()->email === "anoual@cucinanapoli.com") {
+            return parent::getEloquentQuery()->where("restau", "Anoual");
+        } else {
+            return parent::getEloquentQuery();
+        }
     }
 
     protected static function shouldRegisterNavigation(): bool
