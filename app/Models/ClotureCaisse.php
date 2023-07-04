@@ -22,7 +22,9 @@ class ClotureCaisse extends Model
         'cartebancaire',
         'LivE',
         'LivC',
-        'encaissement',
+        'Compensation',
+        'ComGlovo',
+        'ComLivraison',
         'signature',
     ];
 }

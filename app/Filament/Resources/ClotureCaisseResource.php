@@ -56,7 +56,13 @@ class ClotureCaisseResource extends Resource
                 Forms\Components\TextInput::make('LivC')
                     ->numeric()
                     ->required(),
-                Forms\Components\TextInput::make('encaissement')
+                Forms\Components\TextInput::make('Compensation')
+                    ->numeric()
+                    ->required(),
+                Forms\Components\TextInput::make('ComGlovo')
+                    ->numeric()
+                    ->required(),
+                Forms\Components\TextInput::make('ComLivraison')
                     ->numeric()
                     ->required(),
                 Forms\Components\FileUpload::make('signature')
@@ -88,7 +94,9 @@ class ClotureCaisseResource extends Resource
                 Tables\Columns\TextColumn::make('cartebancaire'),
                 Tables\Columns\TextColumn::make('LivE'),
                 Tables\Columns\TextColumn::make('LivC'),
-                Tables\Columns\TextColumn::make('encaissement'),
+                Tables\Columns\TextColumn::make('Compensation'),
+                Tables\Columns\TextColumn::make('ComGlovo'),
+                Tables\Columns\TextColumn::make('ComLivraison'),
                 Tables\Columns\ImageColumn::make('signature'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Date')
