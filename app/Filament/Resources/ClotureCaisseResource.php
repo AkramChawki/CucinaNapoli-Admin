@@ -65,9 +65,6 @@ class ClotureCaisseResource extends Resource
                 Forms\Components\TextInput::make('ComLivraison')
                     ->numeric()
                     ->required(),
-                Forms\Components\FileUpload::make('signature')
-                    ->image()
-                    ->directory("singatures"),
             ]);
     }
 
