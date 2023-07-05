@@ -28,7 +28,7 @@ return new class extends Migration
             $table->float("ComGlovo");
             $table->float("ComLivraison");
             $table->float("Compensation");
-            $table->string("signature");
+            $table->string("signature")->nullable();
             $table->timestamps();
         });
     }
