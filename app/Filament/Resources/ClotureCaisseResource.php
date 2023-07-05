@@ -67,8 +67,7 @@ class ClotureCaisseResource extends Resource
                     ->required(),
                 Forms\Components\FileUpload::make('signature')
                     ->image()
-                    ->directory("singatures")
-                    ->required(),
+                    ->directory("singatures"),
             ]);
     }
 
