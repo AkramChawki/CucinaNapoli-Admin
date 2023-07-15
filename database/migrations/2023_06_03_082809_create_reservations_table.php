@@ -22,6 +22,7 @@ return new class extends Migration
             $table->dateTime('selectedDate');
             $table->string('restau');
             $table->string("notes")->nullable();
+            $table->string("confirmed")->default(false);
             $table->foreignId("user_id")->nullable()->constrained();
             $table->timestamps();
         });

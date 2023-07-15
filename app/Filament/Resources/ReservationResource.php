@@ -29,36 +29,11 @@ class ReservationResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->options(User::all()->pluck("name", "id")),
-                Forms\Components\TextInput::make('nom')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('prenom')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('telephone')
-                    ->tel()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('restaurant')
-                    ->options(config("restaurants"))
-                    ->required(),
-                Forms\Components\TextInput::make('adults')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('childs')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('selectedDate')
-                    ->required(),
-                Forms\Components\Textarea::make('notes')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Select::make('confirmed')
+                    ->options([
+                        true => "Oui",
+                        false => "non",
+                    ]),
             ]);
     }
 
@@ -76,6 +51,9 @@ class ReservationResource extends Resource
                 Tables\Columns\TextColumn::make('selectedDate')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('notes'),
+                Tables\Columns\IconColumn::make('confirmed')
+                    ->label("Confirmed ?")
+                    ->boolean(),
             ])
             ->filters([
                 //
@@ -89,13 +67,14 @@ class ReservationResource extends Resource
             ]);
     }
 
+    
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-
+    
     public static function getPages(): array
     {
         return [
@@ -105,6 +84,11 @@ class ReservationResource extends Resource
         ];
     }
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+    
     public static function getEloquentQuery(): Builder
     {
         if (auth()->user()->email === "palmier@cucinanapoli.com") {
