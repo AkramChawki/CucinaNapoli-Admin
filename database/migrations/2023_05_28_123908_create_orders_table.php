@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("adress");
             $table->string("telephone");
             $table->string("status")->default("waiting");
-            $table->string("payed")->default(false);
+            $table->string("payed")->default("non");
             $table->text("notes");
             $table->string("delivery_type");
             $table->boolean("use_whatsapp")->default(false);

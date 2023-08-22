@@ -6,6 +6,7 @@ use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Tables\Actions\Action;
 use Filament\Resources\Form;
@@ -38,8 +39,8 @@ class OrderResource extends Resource
                     ]),
                 Forms\Components\Select::make('payed')
                     ->options([
-                        true => "Oui",
-                        false => "non",
+                        "oui" => "Oui",
+                        "non" => "non",
                     ]),
             ]);
     }
@@ -48,14 +49,17 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name')->label("Client"),
-                Tables\Columns\TextColumn::make('restaurant'),
+                Tables\Columns\TextColumn::make('user.name')->label("Client")->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('restaurant')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('num')
                     ->label("Code"),
-                Tables\Columns\TextColumn::make('telephone'),
+                Tables\Columns\TextColumn::make('telephone')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('delivery_type')
-                    ->label("Methode de Livraison"),
+                    ->label("Methode de Livraison")->sortable(),
                 Tables\Columns\IconColumn::make('payed')
+                    ->getStateUsing(function (Order $record): bool {
+                        return $record->payed == "oui";
+                    })
                     ->label("payed ?")
                     ->boolean(),
                 Tables\Columns\IconColumn::make('use_whatsapp')
@@ -71,7 +75,16 @@ class OrderResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->using(function (Order $record, array $data): Order {
+                    $record->update($data);
+                    if ($data["payed"] == "oui" && $record->user_id != null) {
+                        $user = User::find($record->user_id);
+                        $score = intval((intval($record->total) * 25) / 50);
+                        $user->update(["points" => $score]);
+                    }
+                    
+                    return $record;
+                }),
                 Action::make("voir")
                     ->label('Voir')
                     ->url(fn (Order $record): string => OrderResource::getUrl("details", ["record" => $record]))
