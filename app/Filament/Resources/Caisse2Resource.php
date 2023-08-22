@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ClotureCaisseResource\Pages;
-use App\Filament\Resources\ClotureCaisseResource\RelationManagers;
-use App\Models\ClotureCaisse;
+use App\Filament\Resources\Caisse2Resource\Pages\ListCaisse2s;
+use App\Filament\Resources\Caisse2Resource\Pages;
+use App\Filament\Resources\Caiss1Resource\RelationManagers;
+use App\Models\Caisse2;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -14,13 +15,15 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
-class ClotureCaisseResource extends Resource
+class Caisse2Resource extends Resource
 {
-    protected static ?string $model = ClotureCaisse::class;
+    protected static ?string $model = Caisse2::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = 'Commande Cuisinier';
+    protected static ?string $navigationGroup = 'Cloture Caisse';
+
+    protected static ?string $modelLabel = 'Cloture Caisse 18h-00h';
 
     public static function form(Form $form): Form
     {
@@ -59,6 +62,9 @@ class ClotureCaisseResource extends Resource
                 Forms\Components\TextInput::make('Compensation')
                     ->numeric()
                     ->required(),
+                Forms\Components\TextInput::make('Virement')
+                    ->numeric()
+                    ->required(),
                 Forms\Components\TextInput::make('ComGlovo')
                     ->numeric()
                     ->required(),
@@ -91,6 +97,7 @@ class ClotureCaisseResource extends Resource
                 Tables\Columns\TextColumn::make('LivE'),
                 Tables\Columns\TextColumn::make('LivC'),
                 Tables\Columns\TextColumn::make('Compensation'),
+                Tables\Columns\TextColumn::make('Virement'),
                 Tables\Columns\TextColumn::make('ComGlovo'),
                 Tables\Columns\TextColumn::make('ComLivraison'),
                 Tables\Columns\ImageColumn::make('signature'),
@@ -120,9 +127,9 @@ class ClotureCaisseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListClotureCaisses::route('/'),
-            'create' => Pages\CreateClotureCaisse::route('/create'),
-            'edit' => Pages\EditClotureCaisse::route('/{record}/edit'),
+            'index' => Pages\ListCaisse2s::route('/'),
+            'create' => Pages\CreateCaisse2::route('/create'),
+            'edit' => Pages\EditCaisse2::route('/{record}/edit'),
         ];
     }
 

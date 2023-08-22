@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cloture_caisses', function (Blueprint $table) {
+        Schema::create('caisse1s', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->string("date");
@@ -27,8 +27,9 @@ return new class extends Migration
             $table->float("LivC");
             $table->float("ComGlovo");
             $table->float("ComLivraison");
+            $table->float("virement");
             $table->float("Compensation");
-            $table->string("signature")->nullable();
+            $table->string("signature");
             $table->timestamps();
         });
     }
@@ -38,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cloture_caisses');
+        Schema::dropIfExists('caisse1s');
     }
 };
