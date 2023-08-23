@@ -31,10 +31,6 @@ class CuisinierCategoryResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\Select::make('acteur')
-                    ->multiple()
-                    ->options(["Cuisine" => "Cuisinier", "Pizza" => "Pizza", "Salle" => "Salle", "Labo" => "Labo"])
-                    ->required(),
             ]);
     }
 
@@ -44,7 +40,6 @@ class CuisinierCategoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('acteur'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->date(),
             ])

@@ -18,7 +18,7 @@ class CuisinierProduct extends Model
         'Stock',
     ];
 
-    public function category()
+    public function cuisinier_category()
     {
         return $this->belongsTo(CuisinierCategory::class);
     }

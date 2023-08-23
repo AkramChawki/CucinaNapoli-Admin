@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cuisinier_products', function (Blueprint $table) {
+        Schema::create('fiches', function (Blueprint $table) {
             $table->id();
-            $table->string("designation");
-            $table->string("image");
-            $table->string("unite");
-            $table->foreignId('cuisinier_category_id')
-                ->constrained()
-                ->onDelete('cascade');
+            $table->string("name");
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cuisinier_products');
+        Schema::dropIfExists('fiches');
     }
 };
