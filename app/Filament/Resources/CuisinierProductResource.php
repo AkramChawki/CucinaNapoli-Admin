@@ -39,14 +39,8 @@ class CuisinierProductResource extends Resource
                 Forms\Components\TextInput::make('designation')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('imputation')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('unite')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('Stock')
-                    ->numeric()
                     ->maxLength(255),
             ]);
     }
@@ -58,9 +52,7 @@ class CuisinierProductResource extends Resource
                 Tables\Columns\ImageColumn::make('image')->square(),
                 Tables\Columns\TextColumn::make('designation')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('imputation'),
                 Tables\Columns\TextColumn::make('unite'),
-                Tables\Columns\TextColumn::make('Stock'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->date(),
             ])
