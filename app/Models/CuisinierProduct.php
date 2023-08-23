@@ -12,10 +12,8 @@ class CuisinierProduct extends Model
     protected $fillable = [
         'image',
         'designation',
-        'imputation',
         'unite',
         'cuisinier_category_id',
-        'Stock',
     ];
 
     public function cuisinier_category()
