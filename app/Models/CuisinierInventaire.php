@@ -9,9 +9,16 @@ class CuisinierInventaire extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $casts = [
+        'detail' => 'array',
+    ];
 
-    function product() {
-        return $this->belongsTo(CuisinierProduct::class, "cuisinier_product_id");
+    public function products()
+    {
+        return array_map(function ($item) {
+            $p = CuisinierProduct::find($item['product_id']);
+            $p->qty = $item['qty'];
+            return $p;
+        }, $this->detail);
     }
 }

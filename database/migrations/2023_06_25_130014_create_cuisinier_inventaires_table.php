@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('cuisinier_inventaires', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("cuisinier_product_id")->constrained()->cascadeOnDelete();
-            $table->integer("stock");
+            $table->string("name");
+            $table->json("detail");
             $table->timestamps();
         });
     }
