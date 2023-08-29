@@ -50,7 +50,7 @@ class ReclamationResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->date(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('restau')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('date')
