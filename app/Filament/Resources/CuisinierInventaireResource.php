@@ -33,6 +33,9 @@ class CuisinierInventaireResource extends Resource
             Forms\Components\TextInput::make('name')
                 ->required()
                 ->maxLength(255),
+            Forms\Components\TextInput::make('restau')
+                ->required()
+                ->maxLength(255),
             Forms\Components\Textarea::make('product_ids')
                 ->required(),
         ]);
@@ -43,6 +46,8 @@ class CuisinierInventaireResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('restau')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->date(),

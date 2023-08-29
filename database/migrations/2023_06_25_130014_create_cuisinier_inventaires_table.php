@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('cuisinier_inventaires', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("restau");
             $table->json("detail");
             $table->timestamps();
         });

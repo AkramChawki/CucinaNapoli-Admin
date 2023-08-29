@@ -30,6 +30,8 @@ class Caisse1Resource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required(),
+                Forms\Components\TextInput::make('restau')
+                    ->required(),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\TimePicker::make('time')
@@ -81,6 +83,8 @@ class Caisse1Resource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('restau')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('date')
                     ->date()

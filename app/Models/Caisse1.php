@@ -11,6 +11,7 @@ class Caisse1 extends Model
 
     protected $fillable = [
         'name',
+        'restau',
         'date',
         'time',
         'caissierE',

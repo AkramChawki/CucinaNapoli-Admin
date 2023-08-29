@@ -11,6 +11,7 @@ class ErreurCuisine extends Model
 
     protected $fillable = [
         'name',
+        'restau',
         'date',
         'erreur',
     ];

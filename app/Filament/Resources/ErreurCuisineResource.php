@@ -28,6 +28,8 @@ class ErreurCuisineResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required(),
+                Forms\Components\TextInput::make('restau')
+                    ->required(),
                 Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\TextInput::make('erreur')
@@ -40,6 +42,8 @@ class ErreurCuisineResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('restau')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('date'),
                 Tables\Columns\TextColumn::make('erreur'),
