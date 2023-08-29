@@ -63,7 +63,7 @@ class Caisse1Resource extends Resource
                 Forms\Components\TextInput::make('Compensation')
                     ->numeric()
                     ->required(),
-                Forms\Components\TextInput::make('Virement')
+                Forms\Components\TextInput::make('virement')
                     ->numeric()
                     ->required(),
                 Forms\Components\TextInput::make('cheque')
