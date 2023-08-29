@@ -4,6 +4,7 @@
     <main class="bg-white px-4 pt-16 pb-24 sm:px-6 sm:pt-24 lg:px-8 lg:py-32">
         <div class="max-w-3xl mx-auto">
             <h1 class="font-bold mb-4 text-3xl">Nom: {{ $record->name }}</h1>
+            <h1 class="font-bold mb-4 text-3xl">Restaurant: {{ $record->restau }}</h1>
             <p class="mb-4 text-xl font-medium">Les produits: </p>
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
