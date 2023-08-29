@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\EmployeResource\Pages;
+use App\Filament\Resources\EmployeResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -14,15 +14,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
-class UserResource extends Resource
+class EmployeResource extends Resource
 {
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = 'Utilisateurs';
+    protected static ?string $navigationGroup = 'Commande Cuisinier';
 
-    protected static ?int $navigationSort = 1;
+    protected static ?string $modelLabel = 'Employe';
+
+    protected static ?string $slug = 'employes';
+
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
@@ -31,16 +35,15 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('nom')
+                Forms\Components\TextInput::make('email')
+                    ->email()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('prenom')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('adress')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('telephone')
-                    ->tel()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('points')
+                Forms\Components\TextInput::make('password')
+                    ->maxLength(255)
+                    ->hiddenOn(Pages\EditEmploye::class),
+                Forms\Components\Select::make('role')
+                    ->multiple()
+                    ->options(["caisse" => "caisse", "cuisine" => "cuisine", "laboratoire" => "laboratoire", "pizzaolo" => "pizzaolo", "magasin" => "magasin", "salle" => "salle"])
                     ->required(),
             ]);
     }
@@ -49,15 +52,11 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nom')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('prenom')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('adress'),
-                Tables\Columns\TextColumn::make('telephone'),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('points'),
+                Tables\Columns\TextColumn::make('role'),
             ])
             ->filters([
                 //
@@ -80,21 +79,21 @@ class UserResource extends Resource
 
     public static function getEloquentQuery(): Builder
     {
-            return parent::getEloquentQuery()->where('email', 'NOT LIKE', '%@cucinanapoli.com');
+        return parent::getEloquentQuery()->where('email', 'LIKE', '%@cucinanapoli.com');
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListEmployes::route('/'),
+            'create' => Pages\CreateEmploye::route('/create'),
+            'edit' => Pages\EditEmploye::route('/{record}/edit'),
         ];
     }
 
     public static function canCreate(): bool
     {
-        return false;
+        return true;
     }
 
     protected static function shouldRegisterNavigation(): bool
