@@ -26,6 +26,7 @@ class Caisse2 extends Model
         'ComGlovo',
         'ComLivraison',
         'virement',
+        'cheque',
         'signature',
     ];
 }

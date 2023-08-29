@@ -64,6 +64,9 @@ class Caisse1Resource extends Resource
                 Forms\Components\TextInput::make('Virement')
                     ->numeric()
                     ->required(),
+                Forms\Components\TextInput::make('cheque')
+                    ->numeric()
+                    ->required(),
                 Forms\Components\TextInput::make('ComGlovo')
                     ->numeric()
                     ->required(),
@@ -97,6 +100,7 @@ class Caisse1Resource extends Resource
                 Tables\Columns\TextColumn::make('LivC'),
                 Tables\Columns\TextColumn::make('Compensation'),
                 Tables\Columns\TextColumn::make('virement'),
+                Tables\Columns\TextColumn::make('cheque'),
                 Tables\Columns\TextColumn::make('ComGlovo'),
                 Tables\Columns\TextColumn::make('ComLivraison'),
                 Tables\Columns\ImageColumn::make('signature'),

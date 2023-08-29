@@ -28,6 +28,7 @@ return new class extends Migration
             $table->float("ComGlovo");
             $table->float("ComLivraison");
             $table->float("virement");
+            $table->float("cheque");
             $table->float("Compensation");
             $table->string("signature");
             $table->timestamps();
