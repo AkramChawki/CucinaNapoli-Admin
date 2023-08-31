@@ -9,10 +9,5 @@ class ErreurCuisine extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'restau',
-        'date',
-        'erreur',
-    ];
+    protected $guarded = [];
 }

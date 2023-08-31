@@ -34,9 +34,11 @@ class ReclamationResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('ticket')
                     ->required(),
+                Forms\Components\TextInput::make('objet')
+                    ->required(),
                 Forms\Components\TextInput::make('canal')
                     ->required(),
-                Forms\Components\Textarea::make('objet')
+                Forms\Components\Textarea::make('plat')
                     ->columnSpan(2)
                     ->required(),
                 Forms\Components\Textarea::make('motif')
@@ -57,8 +59,9 @@ class ReclamationResource extends Resource
                     ->date(),
                 Tables\Columns\TextColumn::make('ticket')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('canal'),
                 Tables\Columns\TextColumn::make('objet'),
+                Tables\Columns\TextColumn::make('canal'),
+                Tables\Columns\TextColumn::make('plat'),
                 Tables\Columns\TextColumn::make('motif'),
             ])
             ->filters([

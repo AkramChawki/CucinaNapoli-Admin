@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string("name");
             $table->string("restau");
             $table->string("date");
-            $table->string("erreur");
+            $table->string("produit");
+            $table->string("entite");
+            $table->string("plat");
+            $table->string("motif");
             $table->timestamps();
         });
     }

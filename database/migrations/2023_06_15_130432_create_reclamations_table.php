@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string("restau");
             $table->string("date");
             $table->string("ticket");
-            $table->string("canal");
             $table->string("objet");
+            $table->string("canal");
+            $table->string("plat");
             $table->string("motif");
             $table->timestamps();
         });
