@@ -30,13 +30,13 @@ class ErreurCuisineResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('restau')
                     ->required(),
-                Forms\Components\TextInput::make('date')
+                Forms\Components\DatePicker::make('date')
                     ->required(),
                 Forms\Components\TextInput::make('produit')
                     ->required(),
                 Forms\Components\TextInput::make('entite')
                     ->required(),
-                Forms\Components\DatePicker::make('plat')
+                Forms\Components\TextInput::make('plat')
                     ->required(),
                 Forms\Components\TextInput::make('motif')
                     ->required(),
@@ -51,7 +51,9 @@ class ErreurCuisineResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('restau')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('date'),
+                Tables\Columns\TextColumn::make('date')
+                    ->label('Date')
+                    ->date(),
                 Tables\Columns\TextColumn::make('produit'),
                 Tables\Columns\TextColumn::make('entite'),
                 Tables\Columns\TextColumn::make('plat'),

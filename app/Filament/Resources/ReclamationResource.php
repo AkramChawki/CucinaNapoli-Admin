@@ -56,6 +56,7 @@ class ReclamationResource extends Resource
                 Tables\Columns\TextColumn::make('restau')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('date')
+                    ->label('date')
                     ->date(),
                 Tables\Columns\TextColumn::make('ticket')
                     ->searchable(),
