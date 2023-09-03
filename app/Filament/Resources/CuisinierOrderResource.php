@@ -55,6 +55,11 @@ class CuisinierOrderResource extends Resource
                 //
             ])
             ->actions([
+                Action::make("pdf")
+                    ->label('pdf')
+                    ->url(fn (CuisinierOrder $record): string => "https://restaurant.cucinanapoli.com/storage/documents/$record->pdf")
+                    ->openUrlInNewTab()
+                    ->icon('heroicon-o-document'),
                 Action::make("voir")
                     ->label('Voir')
                     ->url(fn (CuisinierOrder $record): string => CuisinierOrderResource::getUrl("details", ["record" => $record]))

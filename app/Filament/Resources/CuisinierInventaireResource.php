@@ -56,6 +56,11 @@ class CuisinierInventaireResource extends Resource
                 //
             ])
             ->actions([
+                Action::make("pdf")
+                    ->label('pdf')
+                    ->url(fn (CuisinierInventaire $record): string => "https://restaurant.cucinanapoli.com/storage/documents/$record->pdf")
+                    ->openUrlInNewTab()
+                    ->icon('heroicon-o-document'),
                 Action::make("voir")
                     ->label('Voir')
                     ->url(fn (CuisinierInventaire $record): string => CuisinierInventaireResource::getUrl("details", ["record" => $record]))
