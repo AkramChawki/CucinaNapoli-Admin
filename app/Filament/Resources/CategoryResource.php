@@ -67,8 +67,7 @@ class CategoryResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
                 ExportBulkAction::make()
-            ])
-            ->reorderable('sort');
+            ]);
     }
 
     public static function getRelations(): array
