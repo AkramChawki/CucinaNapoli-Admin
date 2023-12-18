@@ -22,9 +22,9 @@ class ChiffreAffaireAnoualResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = "Chiffre d'affaire";
+    protected static ?string $navigationGroup = "Chiffres";
 
-    protected static ?string $modelLabel = 'Anoual';
+    protected static ?string $modelLabel = 'Chiffre Affaire Anoual';
 
     protected static ?string $slug = 'ChiffreAffaireAnoual';
 

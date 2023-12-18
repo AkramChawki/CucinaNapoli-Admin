@@ -22,11 +22,12 @@ class ChiffreAffairePalmierResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = "Chiffre d'affaire";
+    protected static ?string $navigationGroup = "Chiffres";
 
-    protected static ?string $modelLabel = 'Palmier';
+    protected static ?string $modelLabel = "Chiffre Affaire Palmier";
 
     protected static ?string $slug = 'ChiffreAffairePalmier';
+
 
     public static function form(Form $form): Form
     {
